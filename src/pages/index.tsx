@@ -16,23 +16,12 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Container maxW="container.xl" mx="auto" position="relative">
-        <Box
-          as="nav"
-          zIndex={999}
-          position="fixed"
-          top="6"
-          left={0}
-          right={0}
-          mx="4"
-          p="4"
-          bg="whiteAlpha.50"
-          backdropFilter="auto"
-          backdropBlur="6px"
-          rounded="lg"
-        >
-          <Text fontWeight="bold" textAlign="center">
-            Simple Etherscan
-          </Text>
+        <Box as="nav" zIndex={999} position="fixed" top="6" left={0} right={0} maxW="container.xl" mx="auto" px="4">
+          <Box bg="whiteAlpha.50" backdropFilter="auto" backdropBlur="6px" p="4" rounded="lg">
+            <Text fontWeight="bold" textAlign="center">
+              Simple Etherscan
+            </Text>
+          </Box>
         </Box>
 
         <Grid templateColumns={{ base: 'repeat(1, 1fr)', md: 'repeat(6, 1fr)' }} w="full" gap={4} pt="24">
