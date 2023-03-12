@@ -1,9 +1,10 @@
+import BlockInfo from '@app/components/BlockInfo'
+import BlockTable from '@app/components/BlockTable'
+import EthPrice from '@app/components/EthPrice'
+import TransactionsTable from '@app/components/TransactionsTable'
+import { Container, GridItem, Grid, Box, Text } from '@chakra-ui/react'
 import Head from 'next/head'
-import Image from 'next/image'
-import { Inter } from 'next/font/google'
-import styles from '@/styles/Home.module.css'
-
-const inter = Inter({ subsets: ['latin'] })
+import Card from '../components/Card'
 
 export default function Home() {
   return (
@@ -14,110 +15,51 @@ export default function Home() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <main className={styles.main}>
-        <div className={styles.description}>
-          <p>
-            Get started by editing&nbsp;
-            <code className={styles.code}>src/pages/index.tsx</code>
-          </p>
-          <div>
-            <a
-              href="https://vercel.com?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              By{' '}
-              <Image
-                src="/vercel.svg"
-                alt="Vercel Logo"
-                className={styles.vercelLogo}
-                width={100}
-                height={24}
-                priority
-              />
-            </a>
-          </div>
-        </div>
+      <Container maxW="container.xl" mx="auto" position="relative">
+        <Box
+          as="nav"
+          zIndex={999}
+          position="fixed"
+          top="6"
+          left={0}
+          right={0}
+          mx="4"
+          p="4"
+          bg="whiteAlpha.50"
+          backdropFilter="auto"
+          backdropBlur="6px"
+          rounded="lg"
+        >
+          <Text fontWeight="bold" textAlign="center">
+            Simple Etherscan
+          </Text>
+        </Box>
 
-        <div className={styles.center}>
-          <Image
-            className={styles.logo}
-            src="/next.svg"
-            alt="Next.js Logo"
-            width={180}
-            height={37}
-            priority
-          />
-          <div className={styles.thirteen}>
-            <Image
-              src="/thirteen.svg"
-              alt="13"
-              width={40}
-              height={31}
-              priority
-            />
-          </div>
-        </div>
+        <Grid templateColumns={{ base: 'repeat(1, 1fr)', md: 'repeat(6, 1fr)' }} w="full" gap={4} pt="24">
+          <GridItem colSpan={{ base: 1, md: 2 }}>
+            <EthPrice />
+          </GridItem>
+          <GridItem colSpan={{ base: 1, md: 4 }}>
+            <BlockInfo />
+          </GridItem>
+          <GridItem colSpan={{ base: 1, md: 3 }} display="block">
+            <Card title="Latest Block">
+              <BlockTable />
+            </Card>
+          </GridItem>
+          <GridItem colSpan={{ base: 1, md: 3 }} display="block">
+            <Card title="Latest Transaction">
+              <TransactionsTable />
+            </Card>
+          </GridItem>
+        </Grid>
 
-        <div className={styles.grid}>
-          <a
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-            className={styles.card}
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <h2 className={inter.className}>
-              Docs <span>-&gt;</span>
-            </h2>
-            <p className={inter.className}>
-              Find in-depth information about Next.js features and&nbsp;API.
-            </p>
-          </a>
-
-          <a
-            href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-            className={styles.card}
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <h2 className={inter.className}>
-              Learn <span>-&gt;</span>
-            </h2>
-            <p className={inter.className}>
-              Learn about Next.js in an interactive course with&nbsp;quizzes!
-            </p>
-          </a>
-
-          <a
-            href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-            className={styles.card}
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <h2 className={inter.className}>
-              Templates <span>-&gt;</span>
-            </h2>
-            <p className={inter.className}>
-              Discover and deploy boilerplate example Next.js&nbsp;projects.
-            </p>
-          </a>
-
-          <a
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-            className={styles.card}
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <h2 className={inter.className}>
-              Deploy <span>-&gt;</span>
-            </h2>
-            <p className={inter.className}>
-              Instantly deploy your Next.js site to a shareable URL
-              with&nbsp;Vercel.
-            </p>
-          </a>
-        </div>
-      </main>
+        <Box as="nav" my="4" p="4" bg="whiteAlpha.50" backdropFilter="auto" backdropBlur="6px" rounded="lg">
+          <Text fontWeight="bold" textAlign="center" fontSize="sm">
+            © {new Date().getFullYear()} by I Putu Saputrayana
+          </Text>
+        </Box>
+      </Container>
     </>
   )
 }
